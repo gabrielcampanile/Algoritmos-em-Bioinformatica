@@ -1,0 +1,5 @@
+Quantidade de A: 3423
+Quantidade de C: 2185
+Quantidade de G: 2800
+Quantidade de T: 2327
+Total de nucleotideos: 10735
