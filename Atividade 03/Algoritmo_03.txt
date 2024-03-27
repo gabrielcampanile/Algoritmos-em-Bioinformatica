@@ -1,0 +1,8 @@
+Passo 1. Importação das bibliotecas necessárias.
+Passo 2. Inicialização das listas e variáveis para armazenar os dados.
+Passo 3. Abertura do arquivo de saída para salvar os resultados.
+Passo 4. Iteração sobre as sequências no arquivo FASTA.
+Passo 5. Extração da sequência e contagem de nucleotídeos (A, C, T, G).
+Passo 6. Cálculo do conteúdo de GC e temperatura de melting (Tm) para cada sequência.
+Passo 7. Salvamento dos resultados no arquivo de saída.
+Passo 8. Plotagem do gráfico de dispersão relacionando conteúdo de GC e temperatura de melting.
