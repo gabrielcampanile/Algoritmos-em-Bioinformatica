@@ -8,7 +8,7 @@ conteudo_TM = []
 n = 0
 
 # Abrir arquivo de saída para salvar os resultados
-with open('C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 03/results.txt', 'w') as output_file:
+with open('C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 03/Resultados.txt', 'w') as output_file:
     for record in SeqIO.parse("dengue.fasta", "fasta"):
         n += 1
         
