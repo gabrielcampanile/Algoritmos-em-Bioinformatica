@@ -7,9 +7,6 @@ record = SeqIO.read("virus_dengue.fasta", "fasta")
 # Extrair a sequência do registro
 sequence = str(record.seq)
 
-# for seq_record in SeqIO.parse("virus_dengue.fasta", "fasta"):
-#     sequence = str(seq_record.seq)
-
 print("Sequência de DNA do arquivo Fasta (Biopython):")
 print(sequence)
 
