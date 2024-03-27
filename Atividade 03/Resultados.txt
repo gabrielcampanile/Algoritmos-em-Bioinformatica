@@ -1,0 +1,210 @@
+Sequencia 1:
+Contagem de nucleotideos:
+A: 138
+C: 99
+T: 109
+G: 107
+Total de nucleotideos: 453
+Conteudo de GC: 45.47%
+Temperatura de Melting (Tm): 82.44
+
+Sequencia 2:
+Contagem de nucleotideos:
+A: 72
+C: 54
+T: 51
+G: 73
+Total de nucleotideos: 250
+Conteudo de GC: 50.80%
+Temperatura de Melting (Tm): 83.73
+
+Sequencia 3:
+Contagem de nucleotideos:
+A: 156
+C: 114
+T: 108
+G: 129
+Total de nucleotideos: 507
+Conteudo de GC: 47.93%
+Temperatura de Melting (Tm): 83.56
+
+Sequencia 4:
+Contagem de nucleotideos:
+A: 142
+C: 92
+T: 98
+G: 107
+Total de nucleotideos: 439
+Conteudo de GC: 45.33%
+Temperatura de Melting (Tm): 82.35
+
+Sequencia 5:
+Contagem de nucleotideos:
+A: 185
+C: 104
+T: 93
+G: 139
+Total de nucleotideos: 521
+Conteudo de GC: 46.64%
+Temperatura de Melting (Tm): 83.06
+
+Sequencia 6:
+Contagem de nucleotideos:
+A: 104
+C: 76
+T: 97
+G: 107
+Total de nucleotideos: 384
+Conteudo de GC: 47.66%
+Temperatura de Melting (Tm): 83.14
+
+Sequencia 7:
+Contagem de nucleotideos:
+A: 197
+C: 116
+T: 120
+G: 146
+Total de nucleotideos: 579
+Conteudo de GC: 45.25%
+Temperatura de Melting (Tm): 82.59
+
+Sequencia 8:
+Contagem de nucleotideos:
+A: 146
+C: 79
+T: 103
+G: 121
+Total de nucleotideos: 449
+Conteudo de GC: 44.54%
+Temperatura de Melting (Tm): 82.05
+
+Sequencia 9:
+Contagem de nucleotideos:
+A: 152
+C: 111
+T: 166
+G: 119
+Total de nucleotideos: 548
+Conteudo de GC: 41.97%
+Temperatura de Melting (Tm): 81.20
+
+Sequencia 10:
+Contagem de nucleotideos:
+A: 158
+C: 104
+T: 125
+G: 136
+Total de nucleotideos: 523
+Conteudo de GC: 45.89%
+Temperatura de Melting (Tm): 82.76
+
+Sequencia 11:
+Contagem de nucleotideos:
+A: 189
+C: 121
+T: 112
+G: 155
+Total de nucleotideos: 577
+Conteudo de GC: 47.83%
+Temperatura de Melting (Tm): 83.65
+
+Sequencia 12:
+Contagem de nucleotideos:
+A: 214
+C: 148
+T: 143
+G: 170
+Total de nucleotideos: 675
+Conteudo de GC: 47.11%
+Temperatura de Melting (Tm): 83.47
+
+Sequencia 13:
+Contagem de nucleotideos:
+A: 159
+C: 90
+T: 89
+G: 141
+Total de nucleotideos: 479
+Conteudo de GC: 48.23%
+Temperatura de Melting (Tm): 83.63
+
+Sequencia 14:
+Contagem de nucleotideos:
+A: 165
+C: 136
+T: 138
+G: 147
+Total de nucleotideos: 586
+Conteudo de GC: 48.29%
+Temperatura de Melting (Tm): 83.85
+
+Sequencia 15:
+Contagem de nucleotideos:
+A: 250
+C: 157
+T: 161
+G: 194
+Total de nucleotideos: 762
+Conteudo de GC: 46.06%
+Temperatura de Melting (Tm): 83.13
+
+Sequencia 16:
+Contagem de nucleotideos:
+A: 202
+C: 118
+T: 137
+G: 167
+Total de nucleotideos: 624
+Conteudo de GC: 45.67%
+Temperatura de Melting (Tm): 82.82
+
+Sequencia 17:
+Contagem de nucleotideos:
+A: 275
+C: 137
+T: 156
+G: 210
+Total de nucleotideos: 778
+Conteudo de GC: 44.60%
+Temperatura de Melting (Tm): 82.54
+
+Sequencia 18:
+Contagem de nucleotideos:
+A: 171
+C: 84
+T: 113
+G: 128
+Total de nucleotideos: 496
+Conteudo de GC: 42.74%
+Temperatura de Melting (Tm): 81.42
+
+Sequencia 19:
+Contagem de nucleotideos:
+A: 98
+C: 80
+T: 68
+G: 89
+Total de nucleotideos: 335
+Conteudo de GC: 50.45%
+Temperatura de Melting (Tm): 84.09
+
+Sequencia 20:
+Contagem de nucleotideos:
+A: 104
+C: 53
+T: 61
+G: 84
+Total de nucleotideos: 302
+Conteudo de GC: 45.36%
+Temperatura de Melting (Tm): 81.84
+
+Sequencia 21:
+Contagem de nucleotideos:
+A: 134
+C: 105
+T: 75
+G: 124
+Total de nucleotideos: 438
+Conteudo de GC: 52.28%
+Temperatura de Melting (Tm): 85.19
+

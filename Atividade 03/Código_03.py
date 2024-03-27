@@ -9,7 +9,7 @@ n = 0
 
 # Abrir arquivo de saída para salvar os resultados
 with open('C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 03/Resultados.txt', 'w') as output_file:
-    for record in SeqIO.parse("dengue.fasta", "fasta"):
+    for record in SeqIO.parse("C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 03/dengue.fasta", "fasta"):
         n += 1
         
         # Extrair a sequência do registro
