@@ -91,7 +91,7 @@ for j in range(3):
         k += 1  # Incrementa o número da sequência
 
     # Escrevendo os registros no arquivo FASTA
-    caminho_saida_arquivo = os.path.join(pasta_saida, f'arquivo_saida_{n}.fasta')
+    caminho_saida_arquivo = os.path.join(pasta_saida, f'frame{n}.fasta')
     SeqIO.write(registros, caminho_saida_arquivo, "fasta")
 
     # Esvazia a lista registros para a próxima iteração
@@ -128,7 +128,7 @@ for j in range(3):
         k += 1  # Incrementa o número da sequência
 
     # Escrevendo os registros no arquivo FASTA
-    caminho_saida_arquivo = os.path.join(pasta_saida, f'arquivo_saida_{n}.fasta')
+    caminho_saida_arquivo = os.path.join(pasta_saida, f'frame{n}.fasta')
     SeqIO.write(registros, caminho_saida_arquivo, "fasta")
 
     # Esvazia a lista registros para a próxima iteração
