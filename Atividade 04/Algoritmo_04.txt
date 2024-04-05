@@ -1,0 +1,11 @@
+Passo 01 - Importe os módulos necessários do Biopython e o módulo os.
+Passo 02 - Defina um dicionário de códons, mapeando códons de DNA para aminoácidos.
+Passo 03 - Defina os caminhos para o arquivo FASTA de entrada, a pasta de saída e o arquivo de saída do RNA.
+Passo 04 - Verifique se a pasta de saída especificada existe. Se não existir, crie-a.
+Passo 05 - Transcreva as sequências de DNA para RNA, substituindo "T" por "U".
+Passo 06 - Grave as sequências de RNA transcritas em um arquivo FASTA de saída.
+Passo 07 - Para cada sequência de RNA transcrita, traduza os códons em sequências de proteínas correspondentes.
+Passo 08 - Crie registros de sequências de RNA e proteína com IDs e descrições apropriados.
+Passo 09 - Grave os registros de sequências de RNA e proteína em arquivos FASTA separados para cada quadro de leitura.
+Passo 10 - Limpe a lista de registros para a próxima iteração.
+Passo 11 - Repita os passos de tradução e gravação para os outros quadros de leitura, tanto no sentido 5' -> 3' quanto no sentido 3' -> 5'.

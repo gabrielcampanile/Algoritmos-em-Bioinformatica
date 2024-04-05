@@ -1,0 +1,135 @@
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+import os
+
+# Dicionário de códons e seus aminoácidos correspondentes
+codon_dict = {
+    "UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
+    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
+    "UAU": "Y", "UAC": "Y", "UAA": "*", "UAG": "*",
+    "UGU": "C", "UGC": "C", "UGA": "*", "UGG": "W",
+    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
+    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+    "CAU": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
+    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+    "AUU": "I", "AUC": "I", "AUA": "I", "AUG": "M",
+    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+    "AAU": "N", "AAC": "N", "AAA": "K", "AAG": "K",
+    "AGU": "S", "AGC": "S", "AGA": "R", "AGG": "R",
+    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
+    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+    "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
+    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G",
+}
+
+# Caminho para o arquivo FASTA
+arquivo_fasta = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 04/IN Dengue 21 segmentos corrigido.fasta"
+pasta_saida = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 04/output"
+saida_RNA = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 04/RNA.fasta"
+
+# Se a pasta de saída não existir, crie-a
+if not os.path.exists(pasta_saida):
+    os.makedirs(pasta_saida)
+
+# Lista para armazenar os registros de sequências
+registros = []
+registros_RNA = []
+
+for indice, registro in enumerate(SeqIO.parse(arquivo_fasta, "fasta")):
+    # Transcrevendo a sequência de DNA para RNA
+    # rna_sequence = record.seq.transcribe()
+    # Convertendo a sequência de DNA para RNA
+    sequencia_dna = str(registro.seq)
+    sequencia_RNA = ""
+    for nucleotideo in sequencia_dna:
+        if nucleotideo == "A":
+            sequencia_RNA += "U"
+        elif nucleotideo == "T":
+            sequencia_RNA += "A"
+        elif nucleotideo == "C":
+            sequencia_RNA += "G"
+        elif nucleotideo == "G":
+            sequencia_RNA += "C"
+
+    # Criando registro de sequência para RNA (Cabeçalho do arquivo FASTA)
+    registro_RNA = SeqRecord(sequencia_RNA, id=f"{registro.id}", description=f"Dengue virus type 1 strain Den1BR/90, complete RNA segment {indice + 1}")
+
+    # Adicionando o registro à lista
+    registros_RNA.append(registro_RNA)
+
+# Escrevendo os registros de RNA no arquivo FASTA
+with open(saida_RNA, "w") as saida_fh:
+    SeqIO.write(registros_RNA, saida_fh, "fasta")
+
+# Fazendo os 3 frames pelo sentido 5' -> 3'
+for j in range(3):
+    n = j + 1  # Número do frame
+    k = 1  # Contador no número da sequência
+
+    for registro in SeqIO.parse(arquivo_fasta, "fasta"):
+        # Lendo as sequências de DNA e transcrevendo-as para RNA
+        sequencia_dna = registro.seq
+        sequencia_RNA = sequencia_dna.transcribe()    
+
+        # Traduzindo o RNA em proteína para diferentes posições de início
+        sequencia_proteina = ""
+        for i in range(j, len(sequencia_RNA), 3):
+            codon = str(sequencia_RNA[i:i + 3])
+            if codon in codon_dict:
+                sequencia_proteina += codon_dict[codon]
+            else:
+                sequencia_proteina += "X"  # Marca o codon desconhecido como "X"
+
+        # Criando registros de sequência para RNA e proteína
+        registro_RNA = SeqRecord(sequencia_RNA, id=f"{registro.id}", description=f"Dengue virus type 1 strain Den1BR/90, complete RNA segment {k} - Frame {n}")
+        registro_proteina = SeqRecord(Seq(sequencia_proteina), id=f"{registro.id}", description=f"Dengue virus type 1 strain Den1BR/90, complete PROTEIN segment {k} - Frame {n}")
+        # Adicionando os registros à lista
+        registros.append(registro_RNA)
+        registros.append(registro_proteina)
+
+        k += 1  # Incrementa o número da sequência
+
+    # Escrevendo os registros no arquivo FASTA
+    caminho_saida_arquivo = os.path.join(pasta_saida, f'arquivo_saida_{n}.fasta')
+    SeqIO.write(registros, caminho_saida_arquivo, "fasta")
+
+    # Esvazia a lista registros para a próxima iteração
+    registros.clear()
+
+# Fazendo os 3 frames pelo sentido 3' -> 5'
+for j in range(3):
+    n = j + 4  # Número do frame
+    k = 1  # Contador do número da sequência
+
+    for registro in SeqIO.parse(arquivo_fasta, "fasta"):
+        # Lendo as sequências de DNA e transcrevendo-as para RNA
+        sequencia_dna = registro.seq
+        sequencia_RNA
+        sequencia_RNA = sequencia_dna.transcribe()
+
+        # Traduzindo o RNA em proteína para diferentes posições de início
+        sequencia_proteina = ""
+        for i in range(j, len(sequencia_RNA), 3):
+            codon = str(sequencia_RNA[i:i + 3])
+            if codon in codon_dict:
+                sequencia_proteina += codon_dict[codon]
+            else:
+                sequencia_proteina += "X"  # Marca o codon desconhecido como "X"
+
+        # Criando registros de sequência para RNA e proteína
+        registro_RNA = SeqRecord(sequencia_RNA, id=f"{registro.id}", description=f"Dengue virus type 1 strain Den1BR/90, complete RNA segment {k} - Frame {n}")
+        registro_proteina = SeqRecord(Seq(sequencia_proteina), id=f"{registro.id}", description=f"Dengue virus type 1 strain Den1BR/90, complete PROTEIN segment {k} - Frame {n}")
+        
+        # Adicionando os registros à lista
+        registros.append(registro_RNA)
+        registros.append(registro_proteina)
+
+        k += 1  # Incrementa o número da sequência
+
+    # Escrevendo os registros no arquivo FASTA
+    caminho_saida_arquivo = os.path.join(pasta_saida, f'arquivo_saida_{n}.fasta')
+    SeqIO.write(registros, caminho_saida_arquivo, "fasta")
+
+    # Esvazia a lista registros para a próxima iteração
+    registros.clear()
