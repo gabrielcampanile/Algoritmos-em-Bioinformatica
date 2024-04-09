@@ -1,0 +1,65 @@
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+
+# Dicionário de códons e seus aminoácidos correspondentes
+codon_dict = {
+    "UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
+    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S",
+    "UAU": "Y", "UAC": "Y", "UAA": "*", "UAG": "*",
+    "UGU": "C", "UGC": "C", "UGA": "*", "UGG": "W",
+    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
+    "CCU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+    "CAU": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
+    "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+    "AUU": "I", "AUC": "I", "AUA": "I", "AUG": "M",
+    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+    "AAU": "N", "AAC": "N", "AAA": "K", "AAG": "K",
+    "AGU": "S", "AGC": "S", "AGA": "R", "AGG": "R",
+    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
+    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+    "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
+    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G",
+}
+
+# Caminho para o arquivo FASTA de DNA
+arquivo_fasta = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 05/Dengue virus type 1 strain Den1BR-90 sequence.fasta"
+
+# Caminho para o arquivo FASTA de saída para as proteínas
+saida_RNA = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 05/RNA.fasta"
+
+# Lista para armazenar os registros de sequências
+registros_proteinas = []
+
+# Fazendo os 3 frames pelo sentido 5' -> 3'
+for j in range(3):
+    n = j + 1  # Número do frame
+    p = 0 # Contador para as proteínas
+
+    for registro in SeqIO.parse(arquivo_fasta, "fasta"):
+        # Lendo as sequências de DNA e transcrevendo-as para RNA
+        sequencia_dna = registro.seq
+        sequencia_RNA = sequencia_dna.transcribe()    
+
+        # Traduzindo o RNA em proteína para diferentes posições de início
+        sequencia_proteina = ""
+        for i in range(j, len(sequencia_RNA), 3):
+            codon = str(sequencia_RNA[i:i + 3])
+            if codon in codon_dict:
+                sequencia_proteina += codon_dict[codon]
+            else:
+                sequencia_proteina += "X"  # Marca o codon desconhecido como "X"
+
+        proteinas = sequencia_proteina.split("*")
+
+        for seq in proteinas:
+            if seq:
+                p += 1
+                # Criando registros de sequência para proteína
+                registro_proteina = SeqRecord(Seq(seq), id=f"{registro.id}", description=f">Codigo do Genoma da Dengue do GenBank, Frame {n},  proteina {p}")
+                # Adicionando os registros à lista
+                registros_proteinas.append(registro_proteina)
+
+# Escrevendo os registros de RNA no arquivo FASTA
+    with open(saida_RNA, "w") as saida_fh:
+        SeqIO.write(registros_proteinas, saida_fh, "fasta")
