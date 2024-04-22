@@ -1,0 +1,49 @@
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+
+# Caminho para o arquivo FASTA de DNA
+sequence = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 06/RNA.fasta"
+analisys = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 06/sequence.gp"
+
+# Caminho para o arquivo FASTA de saída para as proteínas
+saida_RNA = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/3° semestre/Algoritmos em Bioinformática/Atividade 06/regions.fasta"
+
+# Lista para armazenar as regiões extraídas
+rna_region = []
+
+# Abrir o arquivo para leitura
+with open(analisys, 'r') as file:
+    # Ler cada linha do arquivo
+    for line in file:
+        # Se a linha começa com 'Region'
+        if line.startswith('     Region'):
+            # Extrair as coordenadas da região
+            coordinates = line.split()[1]
+            start, end = coordinates.split('..')
+            inicio = int(start)
+            fim = int(end)
+            # print(f"Start: {inicio}, End: {fim}")
+            # Abrir o arquivo FASTA
+            with open(sequence, 'r') as fasta:
+                # Ler o arquivo FASTA
+                for record in SeqIO.parse(fasta, 'fasta'):
+                    # Extrair a sequência de DNA
+                    rna = record.seq
+                    rna_list = list(rna)
+                    # Extrair a região de DNA
+                    rna_region.append(rna_list[inicio-1:fim-1])
+
+                    # Criar um arquivo FASTA de saída
+                    with open(saida_RNA, 'w') as output:
+                        # Para cada região extraída
+                        for i, region in enumerate(rna_region):
+                            # Criar um objeto SeqRecord
+                            record = SeqRecord(Seq(''.join(region)), id=f"region_{i+1}", description='')
+                            # Escrever o objeto SeqRecord no arquivo FASTA
+                            SeqIO.write(record, output, 'fasta')
+                        break
+
+print("Regiões extraídas com sucesso!")
+# cabeçalho região 1
+# região 2...
