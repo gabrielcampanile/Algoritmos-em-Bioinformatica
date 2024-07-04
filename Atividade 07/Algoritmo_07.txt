@@ -1,0 +1,19 @@
+Passo 01 - Definir função read_fasta para ler sequências de um arquivo FASTA.
+
+Passo 02 - Definir função find_overlap para encontrar a sobreposição máxima entre duas sequências.
+
+Passo 03 - Ler as sequências do arquivo FASTA usando read_fasta.
+
+Passo 04 - Inicializar o contig com a primeira sequência da lista de sequências.
+
+Passo 05 - Remover a primeira sequência da lista.
+
+Passo 06 - Iterar enquanto houver sequências na lista.
+
+Passo 07 - Para cada sequência na lista, calcular a sobreposição com o contig atual usando find_overlap.
+
+Passo 08 - Encontrar a sequência com a maior sobreposição e atualizar o contig.
+
+Passo 09 - Remover a sequência correspondente da lista.
+
+Passo 10 - Salvar o contig montado em um arquivo FASTA usando save_contig_to_fasta.

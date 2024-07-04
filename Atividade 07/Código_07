@@ -1,0 +1,62 @@
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+
+def read_fasta(file_path):
+    """Lê sequências de um arquivo FASTA."""
+    return list(SeqIO.parse(file_path, "fasta"))
+
+def find_overlap(seq1, seq2, min_length=3):
+    """Encontra a sobreposição máxima entre o final de seq1 e o início de seq2."""
+    max_overlap_len = 0
+    max_overlap_seq = ""
+    
+    for i in range(min_length, min(len(seq1), len(seq2)) + 1):
+        if seq1[-i:] == seq2[:i]:
+            if i > max_overlap_len:
+                max_overlap_len = i
+                max_overlap_seq = seq1 + seq2[i:]
+    
+    return max_overlap_len, max_overlap_seq
+
+def assemble_contigs(sequences):
+    """Monta contigs a partir de uma lista de sequências usando algoritmo guloso."""
+    contig = sequences[0].seq
+    sequences = sequences[1:]
+    
+    while sequences:
+        max_overlap_len = 0
+        best_seq_index = -1
+        best_contig = contig
+        
+        for i, seq in enumerate(sequences):
+            overlap_len, overlap_seq = find_overlap(contig, seq.seq)
+            if overlap_len > max_overlap_len:
+                max_overlap_len = overlap_len
+                best_seq_index = i
+                best_contig = overlap_seq
+        
+        contig = best_contig
+        sequences.pop(best_seq_index)
+    
+    return contig
+
+def save_contig_to_fasta(contig, file_path):
+    """Salva o contig montado em um arquivo FASTA."""
+    contig_record = SeqRecord(Seq(contig), id="contig", description="")
+    SeqIO.write(contig_record, file_path, "fasta")
+
+# Caminhos para os arquivos de entrada e saída
+input_file = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/Semestres/3° semestre/Algoritmos em Bioinformática/Algoritmos-em-Bioinformatica/Atividade 07/reads4.fasta"
+output_file = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/Semestres/3° semestre/Algoritmos em Bioinformática/Algoritmos-em-Bioinformatica/Atividade 07/contig.fasta"
+
+# Lê sequências do arquivo FASTA de entrada
+sequences = read_fasta(input_file)
+
+# Monta o contig a partir das sequências
+contig = assemble_contigs(sequences)
+
+# Salva o contig no arquivo FASTA de saída
+save_contig_to_fasta(contig, output_file)
+
+print(f"Contig montado e salvo em {output_file}")
