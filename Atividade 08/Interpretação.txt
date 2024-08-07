@@ -1,0 +1,10 @@
+    Similaridade dos Resultados: Os resultados do alinhamento global simples (globalxx) do Bio.pairwise2 
+são bastante similares aos resultados manuais, indicando que ambos os métodos consideram principalmente 
+a similaridade bruta dos nucleotídeos. 
+    
+    Diferenças nos Resultados: Já o alinhamento com penalidades e pontuações personalizadas (globalms) 
+fornece um escore mais alto (474) devido ao ajuste fino das substituições e penalidades de gap, que favorece
+certos pares de nucleotídeos e penaliza outros de maneira diferente do alinhamento global simples.
+
+    Essas diferenças refletem como diferentes parâmetros e algoritmos podem influenciar significativamente 
+a interpretação da similaridade entre sequências biológicas.
