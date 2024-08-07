@@ -47,8 +47,13 @@ def save_contig_to_fasta(contig, file_path):
     SeqIO.write(contig_record, file_path, "fasta")
 
 # Caminhos para os arquivos de entrada e saída
+<<<<<<< HEAD
 input_file = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/Semestres/3° semestre/Algoritmos em Bioinformática/Atividade 07/reads4.fasta"
 output_file = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/Semestres/3° semestre/Algoritmos em Bioinformática/Atividade 07/contig.fasta"
+=======
+input_file = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/Semestres/3° semestre/Algoritmos em Bioinformática/Algoritmos-em-Bioinformatica/Atividade 07/reads4.fasta"
+output_file = "C:/Users/gabri/OneDrive/Documentos/UNIFESP/Semestres/3° semestre/Algoritmos em Bioinformática/Algoritmos-em-Bioinformatica/Atividade 07/contig.fasta"
+>>>>>>> d63bdbce658cc3a354153b790562e3c0b0fecefe
 
 # Lê sequências do arquivo FASTA de entrada
 sequences = read_fasta(input_file)
