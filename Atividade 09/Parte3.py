@@ -41,9 +41,20 @@ def find_selected_items(T, weights, values, n, W):
     return selected_items, total_weight, total_value
 
 selected_items, total_weight, total_value = find_selected_items(T, weights, values, n, W)
-print("Itens selecionados:", selected_items)
+# print("Itens selecionados:", selected_items)
 print("Peso total:", total_weight)
 print("Valor total:", total_value)
+
+# Function to write output to a FASTA file
+def write_fasta(filename, total_weight, total_value):
+    with open(filename, 'w') as f:
+        f.write(">Total Weight\n")
+        f.write(str(total_weight) + "\n")
+        f.write(">Total Value\n")
+        f.write(str(total_value) + "\n")
+
+# Write the output to a FASTA file
+write_fasta("C:/Users/gabri/OneDrive/Documentos/UNIFESP/Semestres/3° semestre/Algoritmos em Bioinformática/Atividade 09/Parte4.fasta", selected_items, total_weight, total_value)
 
 # Recursive solution
 # Time complexity: O(2^n)
