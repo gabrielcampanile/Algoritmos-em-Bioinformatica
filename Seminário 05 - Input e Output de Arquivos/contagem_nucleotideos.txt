@@ -1,0 +1,6 @@
+Contagem de nucleotideos:
+A: 3423
+C: 2185
+T: 2327
+G: 2800
+Total: 10735
